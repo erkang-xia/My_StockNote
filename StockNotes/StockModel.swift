@@ -49,7 +49,7 @@ class StockModel: ObservableObject {
         let datatask = session.dataTask(with: url) {data, urlResponce,error in
             //check that there isnt error
             guard let data = data, error == nil else {
-                if let error = error {
+                if error != nil {
                     print("something is wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
                 } else {
                     print("something is wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")

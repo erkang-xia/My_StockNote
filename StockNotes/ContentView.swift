@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @EnvironmentObject var model : StockModel
     @State var stock = ["AAPL", "ASML", "FB", "BILI","1","2","3","4","5","6","7","8","9"]
     @State var company = ["Apple", "ASML Inc", "FaceBook", "BiliBili"]
     var body: some View {
