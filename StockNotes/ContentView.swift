@@ -1,16 +1,52 @@
 //
 //  ContentView.swift
-//  StockNotes
+//  StockNote
 //
-//  Created by Erkang Xia on 12/12/21.
+//  Created by Erkang Xia on 12/10/21.
 //
 
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var stock = ["AAPL", "ASML", "FB", "BILI","1","2","3","4","5","6","7","8","9"]
+    @State var company = ["Apple", "ASML Inc", "FaceBook", "BiliBili"]
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView{
+            VStack{
+                List{
+                    Section{
+                        ForEach(stock, id: \.self) {stock in
+                            NavigationLink {
+                                StockDetail()
+                            } label: {
+                                Text(stock)
+                            }
+
+                        }
+                    }
+                header:{
+                    Text("Stock")
+                }
+                    
+                    Section{
+                        ForEach(stock, id: \.self) {stock in
+                            Text(stock)
+                        }
+                    }
+                header:{
+                    Text("Stock")
+                }
+                    
+                }
+                .listStyle(SidebarListStyle())
+                
+                
+                
+            }
+            .navigationTitle("Stock")
+        }
+        
     }
 }
 
