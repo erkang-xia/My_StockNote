@@ -14,6 +14,7 @@
 		57221C392766ABA0000FA32B /* StockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57221C382766ABA0000FA32B /* StockModel.swift */; };
 		57221C3B2766ABC3000FA32B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57221C3A2766ABC3000FA32B /* Constants.swift */; };
 		57221C3D2766AC1A000FA32B /* StockDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57221C3C2766AC1A000FA32B /* StockDetail.swift */; };
+		576D5CAB2766B16F00E29560 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576D5CAA2766B16F00E29560 /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		57221C382766ABA0000FA32B /* StockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockModel.swift; sourceTree = "<group>"; };
 		57221C3A2766ABC3000FA32B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		57221C3C2766AC1A000FA32B /* StockDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetail.swift; sourceTree = "<group>"; };
+		576D5CAA2766B16F00E29560 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				57221C3C2766AC1A000FA32B /* StockDetail.swift */,
 				57221C382766ABA0000FA32B /* StockModel.swift */,
 				57221C3A2766ABC3000FA32B /* Constants.swift */,
+				576D5CAA2766B16F00E29560 /* Model.swift */,
 				57221C2E2766AB91000FA32B /* Assets.xcassets */,
 				57221C302766AB91000FA32B /* Preview Content */,
 			);
@@ -149,6 +152,7 @@
 				57221C3D2766AC1A000FA32B /* StockDetail.swift in Sources */,
 				57221C2D2766AB8B000FA32B /* ContentView.swift in Sources */,
 				57221C2B2766AB8B000FA32B /* StockNotesApp.swift in Sources */,
+				576D5CAB2766B16F00E29560 /* Model.swift in Sources */,
 				57221C392766ABA0000FA32B /* StockModel.swift in Sources */,
 				57221C3B2766ABC3000FA32B /* Constants.swift in Sources */,
 			);

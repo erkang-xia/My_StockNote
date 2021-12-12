@@ -10,7 +10,8 @@ import Foundation
 class StockModel: ObservableObject {
     
     init() {
-        createURL(endpoint: "search",queryParameters: ["q":"apple"])
+        let url = createURL(endpoint: "search",queryParameters: ["q":"apple"])
+        getStock(url: url!)
      
     }
     
@@ -39,18 +40,32 @@ class StockModel: ObservableObject {
     
     func getStock(url:URL) {
         //create url request
-        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+        //let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         //get urlsession
         
         let session = URLSession.shared
         
         //create data task
-        let datatask = session.dataTask(with: request) { data, urlResponce, error in
+        let datatask = session.dataTask(with: url) {data, urlResponce,error in
             //check that there isnt error
-            if error == nil {
-                print(urlResponce)
-                
+            guard let data = data, error == nil else {
+                if let error = error {
+                    print("something is wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+                } else {
+                    print("something is wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+                }
+                return
+
             }
+            do {
+                let result = try JSONDecoder().decode(SearchResponce.self, from: data)
+                
+                print(result)
+               
+            }catch{
+                print(error)
+            }
+
         }
         
         datatask.resume()
