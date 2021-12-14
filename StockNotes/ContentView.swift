@@ -17,15 +17,17 @@ struct ContentView: View {
             VStack{
                 List{
                     Section{
-                        ForEach(stock, id: \.self) {stock in
-                            NavigationLink {
-                                StockDetail()
-                            } label: {
-                                Text(stock)
+                        ForEach(model.appleList, id: \.self) {stock in
+                                NavigationLink {
+                                    StockDetail()
+                                } label: {
+                                    Text(stock.symbol ?? "")
+                                }
+
                             }
 
-                        }
-                    }
+                        
+                                            }
                 header:{
                     Text("Stock")
                 }

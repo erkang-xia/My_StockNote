@@ -8,11 +8,11 @@
 import Foundation
 
 class StockModel: ObservableObject {
-    
+    @Published var appleList = [SearchResult]()
     init() {
         let url = createURL(endpoint: "search",queryParameters: ["q":"apple"])
         getStock(url: url!)
-     
+        
     }
     
     
@@ -46,26 +46,37 @@ class StockModel: ObservableObject {
         let session = URLSession.shared
         
         //create data task
-        let datatask = session.dataTask(with: url) {data, urlResponce,error in
+        let datatask = session.dataTask(with: url) { [self]data, urlResponce,error in
             //check that there isnt error
             guard let data = data, error == nil else {
                 if error != nil {
-                    print("something is wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+                    print("something is wrong!")
                 } else {
-                    print("something is wrong!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+                    print("something is wrong!")
                 }
                 return
-
+                
             }
             do {
                 let result = try JSONDecoder().decode(SearchResponce.self, from: data)
                 
+                print("Hold on")
                 print(result)
-               
+                
+                DispatchQueue.main.async {
+                    self.appleList = result.result!
+                }
+                
+                
+                print("Hold on")
+                print(appleList)
+                
+                
+                
             }catch{
                 print(error)
             }
-
+            
         }
         
         datatask.resume()
