@@ -12,13 +12,12 @@ struct ContentView: View {
     @EnvironmentObject var model : StockModel
     @State var stock = ["AAPL", "ASML", "FB", "BILI","1","2","3","4","5","6","7","8","9"]
     @State var company = ["Apple", "ASML Inc", "FaceBook", "BiliBili"]
-    @State private var searchText = ""
     var body: some View {
         NavigationView{
             VStack{
                 List{
                     Section{
-                        ForEach(searchResults, id: \.self) {stock in
+                        ForEach(model.searchResults, id: \.self) {stock in
                                 NavigationLink {
                                     StockDetail()
                                 } label: {
@@ -48,7 +47,7 @@ struct ContentView: View {
                     
                 }
                 .listStyle(SidebarListStyle())
-                .searchable(text: $searchText)
+                .searchable(text: $model.searchText)
                 
                 
                 
@@ -57,13 +56,7 @@ struct ContentView: View {
         }
         
     }
-    var searchResults: [String] {
-        if searchText.isEmpty {
-                    return stock
-                } else {
-                    return stock.filter { $0.contains(searchText) }
-                }
-    }
+
 }
 
 

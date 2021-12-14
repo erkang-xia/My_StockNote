@@ -9,12 +9,18 @@ import Foundation
 
 class StockModel: ObservableObject {
     @Published var appleList = [SearchResult]()
+    @Published var searchText = ""
     init() {
-        let url = createURL(endpoint: "search",queryParameters: ["q":"apple"])
-        getStock(url: url!)
+        
         
     }
     
+    
+    
+    
+    
+    
+    //MARK: API Caller - Stock Search
     
     func createURL (endpoint : String,
                     queryParameters: [String:String]  = [:])
@@ -37,6 +43,8 @@ class StockModel: ObservableObject {
         
         return URL(string: urlString)
     }
+    
+    
     
     func getStock(url:URL) {
         //create url request
@@ -64,15 +72,13 @@ class StockModel: ObservableObject {
                 print(result)
                 
                 DispatchQueue.main.async {
-                    self.appleList = result.result!
+                    self.appleList = result.result ?? [SearchResult]()
                 }
                 
                 
                 print("Hold on")
                 print(appleList)
-                
-                
-                
+
             }catch{
                 print(error)
             }
@@ -80,6 +86,22 @@ class StockModel: ObservableObject {
         }
         
         datatask.resume()
+    }
+    
+    
+    
+    var searchResults: [String] {
+        if searchText.isEmpty {
+                    return []
+                } else {
+                    let url = createURL(endpoint: "search",queryParameters: ["q":"apple"])
+                    getStock(url: url!)
+                    var stocks = [String]()
+                    for stock in appleList {
+                        stocks.append(stock.symbol ?? "")
+                    }
+                    return stocks
+                }
     }
 }
 
